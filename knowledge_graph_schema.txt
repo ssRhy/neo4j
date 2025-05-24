@@ -1,0 +1,57 @@
+化学实验知识图谱结构示意图
+==========================
+
+(Experiment:实验)
+    |
+    |-- [:USES_SUBSTANCE {role: "反应物/产物/催化剂", quantity: "用量"}] --> (Substance:物质)
+    |       |
+    |       |-- [:HAS_HAZARD] --> (Hazard:危险性)
+    |       |
+    |       |-- [:REACTS_TO {reaction_type: "类型", conditions: "条件"}] --> (Substance:物质)
+    |
+    |-- [:USES_EQUIPMENT {purpose: "用途"}] --> (Equipment:设备)
+    |
+    |-- [:HAS_STEP] --> (ProcedureStep:实验步骤)
+    |       |
+    |       |-- [:NEXT_STEP] --> (ProcedureStep:实验步骤)
+    |
+    |-- [:REQUIRES_SAFETY_MEASURE] --> (SafetyMeasure:安全措施)
+    |
+    |-- [:HAS_OBSERVATION] --> (Observation:观察现象)
+
+
+实体属性:
+---------
+Experiment (实验):
+ - name: 实验名称
+ - objective: 实验目的
+ - date: 实验日期
+ - description: 实验描述
+
+Substance (物质):
+ - name: 物质名称
+ - formula: 化学式
+ - state: 状态(固体/液体/气体)
+ - cas_number: CAS号
+ - molecular_weight: 分子量
+
+Equipment (设备):
+ - name: 设备名称
+ - type: 设备类型
+ - description: 设备描述
+
+ProcedureStep (实验步骤):
+ - description: 步骤描述
+ - order: 步骤顺序
+
+SafetyMeasure (安全措施):
+ - description: 安全措施描述
+ - type: 安全措施类型
+
+Hazard (危险性):
+ - name: 危险性名称
+ - description: 描述
+ - level: 危险等级
+
+Observation (观察现象):
+ - description: 现象描述 
